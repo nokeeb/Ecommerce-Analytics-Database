@@ -22,6 +22,16 @@ def main():
     clean_orders_df=orders_df.drop_duplicates(subset='order_id')
     order_items_df=pd.read_csv(BASE_DIR/'order_item_df.csv')
     
+    #checking FK integrity
+    customer_ids=set(clean_customer_df['customer_id'])
+    invalid_orders=clean_orders_df[~clean_orders_df['customer_id'].isin(customer_ids)]
+    print('Number of invalid orders:',invalid_orders.shape[0])
+    product_ids=set(clean_products_df['product_id'])
+    invalid_items_products=order_items_df[~order_items_df['product_id'].isin(product_ids)]
+    print('Number of invalid order items(invalid product):',invalid_items_products.shape[0])
+    order_ids=set(clean_orders_df['order_id'])
+    invalid_items_orders=order_items_df[~order_items_df['order_id'].isin(order_ids)]
+    print('Number of invalid order items(invalid order):',invalid_items_orders.shape[0])
 
 
     cur=conn.cursor()
