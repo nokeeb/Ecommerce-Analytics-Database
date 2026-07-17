@@ -42,7 +42,7 @@ def main():
     
     cur=conn.cursor()
     cur.execute("""DROP SCHEMA IF EXISTS schema""")
-    cur.execute("""CREATE SCHEMA schema"""
+    cur.execute("""CREATE SCHEMA schema""")
     cur.execute("""DROP TABLE IF EXISTS schema.customers CASCADE""")
     cur.execute("""CREATE TABLE IF NOT EXISTS schema.customers
                 (
