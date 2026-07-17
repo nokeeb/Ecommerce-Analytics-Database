@@ -22,3 +22,6 @@ Number of orders by customer - looking at the most active customers, also useful
 Average order value - can be useful for future estimations
 
 Number of orders by month - helps us with predicting trends
+
+# Database model 
+<img width="1382" height="687" alt="ER_diagram" src="https://github.com/user-attachments/assets/5b833407-5fed-427e-b9e7-28e9151a537a" />
