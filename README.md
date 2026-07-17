@@ -112,7 +112,7 @@ git clone https://github.com/nokeeb/Ecommerce-Analytics-Database/
 ```
 # Requirements
 -Python 3.10 or higher and additional libraries which you can install with running the command(into a terminal of your choice):  
-``pip install -r requirements.txt``
+``pip install -r requirements.txt``<br>
 -A configured Postgres Database
 
 
