@@ -40,7 +40,9 @@ def main():
     print('Number of invalid order items(invalid order):',invalid_items_orders.shape[0])
 
     
+    
     cur=conn.cursor()
+    print('Starting CREATE and INSERT operations, this might take a couple of minutes..')
     cur.execute("""DROP SCHEMA IF EXISTS schema""")
     cur.execute("""CREATE SCHEMA schema""")
     cur.execute("""DROP TABLE IF EXISTS schema.customers CASCADE""")
