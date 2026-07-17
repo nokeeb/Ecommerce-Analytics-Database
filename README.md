@@ -121,6 +121,8 @@ To run the insert commands, navigate into the project folder, and then write int
 ```bash
 cd src
 ```
+Take a look at the Database Configuration section before proceeding with running the script to avoid errors
+
 Now once we are in the folder of the script itself,
 run:
 ```bash
