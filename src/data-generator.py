@@ -15,7 +15,7 @@ def main():
         user='postgres',
         password=db_password,
         host='localhost'
-    )
+    ) #you should change this according to your database configuration
     #loading and cleaning datasets
     customers_df=pd.read_csv(BASE_DIR/'data'/'processed'/'customer_df.csv')
     clean_customer_df=customers_df.drop_duplicates(subset='customer_id')
