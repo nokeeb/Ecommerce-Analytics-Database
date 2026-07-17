@@ -39,8 +39,10 @@ def main():
     invalid_items_orders=order_items_df[~order_items_df['order_id'].isin(order_ids)]
     print('Number of invalid order items(invalid order):',invalid_items_orders.shape[0])
 
-
+    
     cur=conn.cursor()
+    cur.execute("""DROP SCHEMA IF EXISTS schema""")
+    cur.execute("""CREATE SCHEMA schema"""
     cur.execute("""DROP TABLE IF EXISTS schema.customers CASCADE""")
     cur.execute("""CREATE TABLE IF NOT EXISTS schema.customers
                 (
