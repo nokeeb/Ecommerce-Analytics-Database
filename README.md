@@ -107,7 +107,11 @@ sql/views.sql
 
 # Installation
 Run command:
-
+```bash
+git clone https://github.com/nokeeb/crypto-data-pipeline.git4
+```
+# Requirements
+Run command:
 ``pip install -r requirements.txt``
 
 ## Database configuration
