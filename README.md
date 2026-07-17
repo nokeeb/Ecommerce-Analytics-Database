@@ -83,3 +83,23 @@ Many more queries you can check for yourself :)
 Run command:
 
 ``pip install -r requirements.txt``
+
+## Database configuration
+
+This project does not store the PostgreSQL password in source code.
+
+Before running the Python scripts, set the `PG_PASSWORD` environment variable locally.
+
+Example:
+
+### Windows PowerShell
+```powershell
+$env:PG_PASSWORD="your_postgres_password"
+python src\load_data.py
+```
+
+### Linux / macOS
+```bash
+export PG_PASSWORD="your_postgres_password"
+python src/load_data.py
+```

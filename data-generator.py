@@ -1,16 +1,19 @@
 import psycopg2
 import pandas as pd
 from pathlib import Path
-
+import os
 
 def main():
     BASE_DIR=Path(__file__).resolve().parent
+    db_password=os.getenv('PG_PASSWORD','changeme')
+    #Either put your db password in the PG_PASSWORD file
+
 
     # Connecting to the database
     conn=psycopg2.connect(
         dbname='Ecommerce Analytics',
         user='postgres',
-        password='samni',
+        password=db_password,
         host='localhost'
     )
     #loading and cleaning datasets
