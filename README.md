@@ -108,7 +108,7 @@ sql/views.sql
 # Installation
 Run command:
 ```bash
-git clone https://github.com/nokeeb/crypto-data-pipeline.git4
+git clone https://github.com/nokeeb/Ecommerce-Analytics-Database/
 ```
 # Requirements
 Run command:
