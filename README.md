@@ -1,4 +1,4 @@
-# Ecommerce-Analytics-Database
+<img width="582" height="365" alt="image" src="https://github.com/user-attachments/assets/127a411b-ff68-474d-87ac-af6de36f814b" /># Ecommerce-Analytics-Database
 Analysis of parts of Brazilian E-Commerce Public Dataset by Olist.Was slighy modified (added product name through Faker Python library)
 
 # What was done
@@ -43,27 +43,16 @@ Analysis of e-commerce is needed.So i took a look at stuff such as:
 # Examples of results
 Top 10 customers (id,name) by consumption(total money spent)
 
-      customer_id                   |    customer_name           |  consumption
-"06f52edb5666757a552cc099a5bce4a5"	|    "Alyssa Wagner"	     |   "$5,820.00"
-"cfe44a707ebf4a1d8072f98871cf4682"	|    "John Cobb"	         |   "$2,976.00"
-"bda9e79a0f077587fd9f4528974324fd"	|    "Benjamin Collins"	     |   "$2,940.00"
-"7288276c67d797e67a2bc2322ee575e1"	|    "Gina Powell"	         |   "$2,697.00"
-"66c87d25828d3391f31eb04e585eaedd"	|    "Troy Lewis"	         |   "$2,349.00"
-"f27d584311a18ce82b2ead2bd8a63366"	|    "Jill Mccoy"	         |   "$2,306.00"
-"51378a8908cdc12c6545fdf842383c97"	|    "Trevor Rangel"	     |   "$2,064.00"
-"23be4b5b1e9add3f80da9607e9de5775"	|    "Stephanie Campbell"    |   "$2,046.00"
-"d91da6adf28c3ef0597453b582f68e66"	|    "Sarah Carpenter"	     |   "$2,016.00"
-"8ac3644a8ccfcd2bbbfb1a1a77ab7201"	|    "Katie Walker"	         |   "$1,909.00"
+<img width="582" height="365" alt="image" src="https://github.com/user-attachments/assets/b90a61fa-48f4-4ed3-8bbe-9e54181c48d0" />
+
+
+
 
 
 Top 5 orders (id) by revenue
 
-            order_id                     revenue
-"8272b63d03f5f79c56e9e4120aec44ef"	 |    5820
-"3a213fcdfe7d98be74ea0dc05a8b31ae"	 |    2976
-"37ee401157a3a0b28c9c6d0ed8c3b24b"	 |    2940
-"428a2f660dc84138d969ccd69a0ab6d5"	 |    2697
-"7f2c22c54cbae55091a09a9653fd2b8a"	 |    2349
+<img width="409" height="208" alt="image" src="https://github.com/user-attachments/assets/788d5f34-6505-46a1-897b-e6dcfe187a5d" />
+
 
 Many more queries you can check for yourself :)
 
