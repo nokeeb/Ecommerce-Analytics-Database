@@ -44,7 +44,6 @@ Analysis of e-commerce is needed.So i took a look at stuff such as:
 Top 10 customers (id,name) by consumption(total money spent)
 
       customer_id                   |    customer_name           |  consumption
-
 "06f52edb5666757a552cc099a5bce4a5"	|    "Alyssa Wagner"	     |   "$5,820.00"
 "cfe44a707ebf4a1d8072f98871cf4682"	|    "John Cobb"	         |   "$2,976.00"
 "bda9e79a0f077587fd9f4528974324fd"	|    "Benjamin Collins"	     |   "$2,940.00"
@@ -60,7 +59,6 @@ Top 10 customers (id,name) by consumption(total money spent)
 Top 5 orders (id) by revenue
 
             order_id                     revenue
-
 "8272b63d03f5f79c56e9e4120aec44ef"	 |    5820
 "3a213fcdfe7d98be74ea0dc05a8b31ae"	 |    2976
 "37ee401157a3a0b28c9c6d0ed8c3b24b"	 |    2940
