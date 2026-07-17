@@ -35,14 +35,21 @@ Relationships:
 # Business questions
 
 Analysis of e-commerce is needed.So i took a look at stuff such as:
--Top products (by revenue,by number of orders etc..)
--Top customers(by consumption, by number of orders..)
--Monthly order trend
+-What products are the most ordered, what products bring the most revenue...
+-What customers spend the most, what customers have the most orders..
+-How does the number of orders change on a monthly basis
 -Average number of orders, average order values
 
 # Examples of results
 Top 10 customers (id,name) by consumption(total money spent)
-
+-----Top 10 customers by consumption
+SELECT  c.customer_id AS ID ,c.customer_name AS Name ,SUM(p.price*oi.quantity) FROM schema.customers AS c
+JOIN schema.orders AS o ON o.customer_id=c.customer_id
+JOIN schema.order_items AS oi ON oi.order_id=o.order_id
+JOIN schema.products AS p ON p.product_id=oi.product_id
+GROUP BY c.customer_id,c.customer_name,o.order_id
+ORDER BY 3 DESC
+LIMIT 10;
 <img width="582" height="365" alt="image" src="https://github.com/user-attachments/assets/b90a61fa-48f4-4ed3-8bbe-9e54181c48d0" />
 
 
@@ -50,11 +57,23 @@ Top 10 customers (id,name) by consumption(total money spent)
 
 
 Top 5 orders (id) by revenue
-
+``SELECT o.order_id,SUM(oi.quantity*p.price::numeric) FROM schema.orders AS o
+JOIN schema.order_items AS oi ON oi.order_id=o.order_id
+JOIN schema.products AS p ON p.product_id=oi.product_id
+GROUP BY o.order_id
+ORDER BY 2 DESC
+LIMIT 5;``
 <img width="409" height="208" alt="image" src="https://github.com/user-attachments/assets/788d5f34-6505-46a1-897b-e6dcfe187a5d" />
 
 
-Many more queries you can check for yourself :)
+Many more queries you can check in
+``
+sql/advanced.sql
+sql/checks.sql
+sql/joins.sql
+sql/performance.sql
+sql/queries.sql
+sql/views.sql``
 
 # SQL techniques
 -DDL (Create,Insert) -> data-generator.py
@@ -96,3 +115,7 @@ python src\load_data.py
 export PG_PASSWORD="your_postgres_password"
 python src/load_data.py
 ```
+
+OR creating a file named ``.env`` and writing inside it:
+
+PG_PASSWORD="your_postgres_password"
