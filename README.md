@@ -58,11 +58,17 @@ Many more queries you can check for yourself :)
 
 # SQL techniques
 -DDL (Create,Insert) -> data-generator.py
+
 -Simple queries -> checks.sql & queries.sql
+
 -Joins (inner,left)
+
 -Group by, order by, having
+
 -Advanced concepts such as CTEs and window functions -> advanced.sql
+
 -Views -> views.sql
+
 -EXPLAIN ANALYZE before and after indexes -> performance.sql
 
 
