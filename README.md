@@ -5,10 +5,10 @@ Analysis of parts of Brazilian E-Commerce Public Dataset by Olist.Was slighy mod
 The first step was getting rid of data that was not needed such as seller data(focus is on orders and customers in this project),
 as well as stuff like product name/description length.Pandas was used to clean the dataset.
 
-Through the data-generator.py script which can be found in the src folder, we fill the database with the required data through
-performing SQL commands using the psycopg2 library
+Through the data-generator.py script which can be found in the ``src`` folder, we fill the database with the required data through
+performing SQL commands using the ``psycopg2`` library
 
-I have checked manually in PostgreSQL for nulls, duplicates and FK integrity.If you wish to check for yourself, you can find the queries in sql/checks.sql
+I have checked manually in PostgreSQL for nulls, duplicates and FK integrity.If you wish to check for yourself, you can find the queries in ``sql/checks.sql``
 
 Then comes the analysis part..
 # Simple queries
@@ -77,3 +77,9 @@ Many more queries you can check for yourself :)
 -Advanced concepts such as CTEs and window functions -> advanced.sql
 -Views -> views.sql
 -EXPLAIN ANALYZE before and after indexes -> performance.sql
+
+
+# Installation
+Run command:
+
+``pip install -r requirements.txt``
