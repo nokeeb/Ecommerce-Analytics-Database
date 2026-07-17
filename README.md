@@ -155,7 +155,7 @@ export PG_PASSWORD="your_postgres_password"
 python src/load_data.py
 ```
 
-OR creating a file named ``.env`` and writing inside it:
+OR creating a file named ``.env`` inside the project directory and writing inside it:
 ```bash
 PG_PASSWORD="your_postgres_password"
 ```
