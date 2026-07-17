@@ -2,9 +2,12 @@ import psycopg2
 import pandas as pd
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 def main():
     BASE_DIR=Path(__file__).resolve().parent.parent
+    load_dotenv(BASE_DIR / '.env')
+
     db_password=os.getenv('PG_PASSWORD','changeme')
     #Create a file named '.env' inside the ROOT PROJECT DIRECTORY, and set (just write the line:) PG_PASSWORD=your_postgres_password
 
