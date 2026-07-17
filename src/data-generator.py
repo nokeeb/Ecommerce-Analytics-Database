@@ -6,7 +6,7 @@ import os
 def main():
     BASE_DIR=Path(__file__).resolve().parent.parent
     db_password=os.getenv('PG_PASSWORD','changeme')
-    #Either put your db password in the PG_PASSWORD file
+    #Create a file named '.env' inside the ROOT PROJECT DIRECTORY, and set (just write the line:) PG_PASSWORD=your_postgres_password
 
 
     # Connecting to the database
