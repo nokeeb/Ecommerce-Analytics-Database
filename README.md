@@ -81,14 +81,14 @@ LIMIT 5;
 
 
 Many more queries you can check in
-``
+```sql
 sql/advanced.sql  
 sql/checks.sql  
 sql/joins.sql  
 sql/performance.sql  
 sql/queries.sql  
 sql/views.sql
-``
+```
 # SQL techniques
 -DDL (Create,Insert) -> data-generator.py
 
