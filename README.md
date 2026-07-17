@@ -1,4 +1,4 @@
-<img width="582" height="365" alt="image" src="https://github.com/user-attachments/assets/127a411b-ff68-474d-87ac-af6de36f814b" /># Ecommerce-Analytics-Database
+# Ecommerce-Analytics-Database
 Analysis of parts of Brazilian E-Commerce Public Dataset by Olist.Was slighy modified (added product name through Faker Python library)
 
 # What was done
