@@ -1,5 +1,5 @@
 # Ecommerce-Analytics-Database
-Analysis of parts of Brazilian E-Commerce Public Dataset by Olist
+Analysis of parts of Brazilian E-Commerce Public Dataset by Olist.Was slighy modified (added product name through Faker Python library)
 
 # What was done
 The first step was getting rid of data that was not needed such as seller data(focus is on orders and customers in this project),
