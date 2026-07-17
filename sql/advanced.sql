@@ -14,7 +14,7 @@ GROUP BY c.customer_id
 --Total revenue by product
 WITH orders_products AS
 (
-SELECT oi.order_id, SUM(oi.quantity*p.price::numeric::integer) as SumByOrder,p.product_id AS product
+SELECT oi.order_id, SUM(oi.quantity*p.price::numeric) as SumByOrder,p.product_id AS product
 FROM schema.order_items AS oi 
 JOIN schema.products AS p ON p.product_id=oi.product_id
 GROUP BY oi.order_id,p.product_id
@@ -23,6 +23,7 @@ SELECT SUM(SumByOrder),p.product_id,p.product_name FROM
 schema.products AS p JOIN orders_products AS op
 ON op.product=p.product_id
 GROUP BY p.product_id,p.product_name
+
 
 --List of products and their rank in price for their category
 SELECT p.product_id,p.product_name,p.category,p.price,
