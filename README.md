@@ -49,15 +49,16 @@ Top 10 customers (id,name) by consumption(total money spent)
 
 -----Top 10 customers by consumption
 
-``SELECT  c.customer_id AS ID ,c.customer_name AS Name ,SUM(p.price*oi.quantity) 
+```sql
+SELECT  c.customer_id AS ID ,c.customer_name AS Name ,SUM(p.price*oi.quantity) 
 FROM schema.customers AS c
 JOIN schema.orders AS o ON o.customer_id=c.customer_id
 JOIN schema.order_items AS oi ON oi.order_id=o.order_id
 JOIN schema.products AS p ON p.product_id=oi.product_id
 GROUP BY c.customer_id,c.customer_name,o.order_id
 ORDER BY 3 DESC
-LIMIT 10;``
-
+LIMIT 10;
+```
 
 <img width="582" height="365" alt="image" src="https://github.com/user-attachments/assets/b90a61fa-48f4-4ed3-8bbe-9e54181c48d0" />
 
@@ -66,12 +67,14 @@ LIMIT 10;``
 
 
 Top 5 orders (id) by revenue
-``SELECT o.order_id,SUM(oi.quantity*p.price::numeric) FROM schema.orders AS o
+```sql
+SELECT o.order_id,SUM(oi.quantity*p.price::numeric) FROM schema.orders AS o
 JOIN schema.order_items AS oi ON oi.order_id=o.order_id
 JOIN schema.products AS p ON p.product_id=oi.product_id
 GROUP BY o.order_id
 ORDER BY 2 DESC
-LIMIT 5;``
+LIMIT 5;
+```
 
 
 <img width="409" height="208" alt="image" src="https://github.com/user-attachments/assets/788d5f34-6505-46a1-897b-e6dcfe187a5d" />
@@ -84,8 +87,8 @@ sql/checks.sql
 sql/joins.sql
 sql/performance.sql
 sql/queries.sql
-sql/views.sql``
-
+sql/views.sql
+``
 # SQL techniques
 -DDL (Create,Insert) -> data-generator.py
 
