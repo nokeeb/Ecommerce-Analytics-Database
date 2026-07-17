@@ -113,6 +113,6 @@ def main():
                     order_items_df['product_id'].iloc[i],quantity))
 
     conn.commit()
-    print("Done")
+    print("Insert done! You can now proceed with database operations.")
 if __name__=='__main__':
     main()
