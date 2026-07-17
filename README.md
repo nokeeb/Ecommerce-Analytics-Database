@@ -111,8 +111,27 @@ Run command:
 git clone https://github.com/nokeeb/Ecommerce-Analytics-Database/
 ```
 # Requirements
-Run command:
+-Python 3.10 or higher and additional libraries which you can install with running the command(into a terminal of your choice):  
 ``pip install -r requirements.txt``
+-A configured Postgres Database
+
+
+# How to run
+To run the insert commands, navigate into the project folder, and then write into a terminal of your choice:
+```bash
+cd src
+```
+Now once we are in the folder of the script itself,
+run:
+```bash
+python data-generator.py
+```
+If the command above does not work(Python doesnt get recognized), try:
+```bash
+py data-generator.py
+```
+
+Once you have a configured database and filled with data after running the scripts, you can play with the queries inside pgAdmin and do tons of other stuff
 
 ## Database configuration
 
