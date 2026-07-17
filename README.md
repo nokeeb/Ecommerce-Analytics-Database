@@ -154,5 +154,6 @@ python src/load_data.py
 ```
 
 OR creating a file named ``.env`` and writing inside it:
-
+```bash
 PG_PASSWORD="your_postgres_password"
+```
