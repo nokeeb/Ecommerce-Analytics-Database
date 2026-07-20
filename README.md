@@ -155,7 +155,7 @@ We have to do the same procedure, setting the environment variable so we can con
 ### Windows PowerShell
 ```powershell
 $env:PG_PASSWORD="your_postgres_password"
-py src/data-generator.py
+python src\data-generator.py
 ```
 
 ### Linux / macOS
