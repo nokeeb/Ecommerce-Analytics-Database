@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS schema.customers CASCADE;
+DROP TABLE IF EXISTS ecommerce.customers CASCADE;
 
-CREATE TABLE IF NOT EXISTS schema.customers
+CREATE TABLE IF NOT EXISTS ecommerce.customers
                 (
                 customer_id text  NOT NULL,
                 customer_name text  NOT NULL,
@@ -10,21 +10,21 @@ CREATE TABLE IF NOT EXISTS schema.customers
                 );
 
 
-DROP TABLE IF EXISTS schema.orders CASCADE;
+DROP TABLE IF EXISTS ecommerce.orders CASCADE;
 
-CREATE TABLE IF NOT EXISTS schema.orders
+CREATE TABLE IF NOT EXISTS ecommerce.orders
                 (
                 order_id TEXT NOT NULL,
                 customer_id TEXT NOT NULL,
                 order_date TIMESTAMP NOT NULL,
                 CONSTRAINT order_id_PK PRIMARY KEY(order_id),
-                CONSTRAINT customer_id_FK FOREIGN KEY(customer_id) REFERENCES schema.customers(customer_id)
+                CONSTRAINT customer_id_FK FOREIGN KEY(customer_id) REFERENCES ecommerce.customers(customer_id)
                 
                 );
 
-DROP TABLE IF EXISTS schema.products CASCADE;
+DROP TABLE IF EXISTS ecommerce.products CASCADE;
 
-CREATE TABLE IF NOT EXISTS schema.products
+CREATE TABLE IF NOT EXISTS ecommerce.products
                 (
                 product_id TEXT NOT NULL,
                 product_name TEXT NOT NULL,
@@ -35,15 +35,15 @@ CREATE TABLE IF NOT EXISTS schema.products
                 
                 );
 
-DROP TABLE IF EXISTS schema.order_items CASCADE;
+DROP TABLE IF EXISTS ecommerce.order_items CASCADE;
 
-CREATE TABLE IF NOT EXISTS schema.order_items
+CREATE TABLE IF NOT EXISTS ecommerce.order_items
                 (
                 order_item_id INT NOT NULL GENERATED ALWAYS AS IDENTITY,
                 order_id TEXT NOT NULL,
                 product_id TEXT NOT NULL,
                 quantity INT NOT NULL,
                 CONSTRAINT order_item_id_PK PRIMARY KEY(order_item_id),
-                CONSTRAINT order_id_FK FOREIGN KEY(order_id) REFERENCES schema.orders(order_id),
-                CONSTRAINT product_id_FK FOREIGN KEY(product_id) REFERENCES schema.products(product_id)
+                CONSTRAINT order_id_FK FOREIGN KEY(order_id) REFERENCES ecommerce.orders(order_id),
+                CONSTRAINT product_id_FK FOREIGN KEY(product_id) REFERENCES ecommerce.products(product_id)
                 );

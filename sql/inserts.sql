@@ -5,7 +5,7 @@
 
 -- CUSTOMERS
 
-INSERT INTO customers (customer_id, customer_name, city, state)
+INSERT INTO ecommerce.customers (customer_id, customer_name, city, state)
 VALUES
 ('cust_001', 'Marko Markovic', 'Sarajevo', 'BiH'),
 ('cust_002', 'Ana Kovac', 'Mostar', 'BiH'),
@@ -15,7 +15,7 @@ VALUES
 
 -- PRODUCTS
 
-INSERT INTO products (product_id, product_name, category, price)
+INSERT INTO ecommerce.products (product_id, product_name, category, price)
 VALUES
 ('prod_001', 'Laptop Lenovo', 'Electronics', 900.00),
 ('prod_002', 'Wireless Mouse', 'Accessories', 25.00),
@@ -26,7 +26,7 @@ VALUES
 
 -- ORDERS
 
-INSERT INTO orders (order_id, customer_id, order_date)
+INSERT INTO ecommerce.orders (order_id, customer_id, order_date)
 VALUES
 ('ord_001', 'cust_001', '2026-01-10'),
 ('ord_002', 'cust_002', '2026-01-15'),
@@ -37,7 +37,7 @@ VALUES
 
 -- ORDER ITEMS
 
-INSERT INTO order_items (order_id, product_id, quantity)
+INSERT INTO ecommerce.order_items (order_id, product_id, quantity)
 VALUES
 ('ord_001', 'prod_001', 1),
 ('ord_001', 'prod_002', 2),
