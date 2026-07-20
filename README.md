@@ -90,7 +90,7 @@ sql/queries.sql
 sql/views.sql
 ```
 # SQL techniques
--DDL (Create,Insert) -> data-generator.py
+-DDL (Create,Insert) -> data_generator.py
 
 -Simple queries -> checks.sql & queries.sql
 
@@ -118,57 +118,59 @@ git clone https://github.com/nokeeb/Ecommerce-Analytics-Database/
 
 # How to run
 
+
 This project does not store the PostgreSQL password in source code.
 
-Before running the Python scripts, set the `PG_PASSWORD` environment variable locally.
+Also assumes PostgreSQL is installed and running locally with a user named 'postgres'
+
+1.Before running the Python scripts, set the `PG_PASSWORD` environment variable locally.
 
 Example:
 
-First we want to run the create_db.py script which is enough to run once (the first time)
-
 Make sure you are in the directory 'Ecommerce-Analytics-Database'
+Run this command every time before running the scripts:
 ### Windows PowerShell
 ```powershell
 $env:PG_PASSWORD="your_postgres_password"
-py src/create_db.py
 ```
 
 ### Linux / macOS
 ```bash
 export PG_PASSWORD="your_postgres_password"
+```
+
+OR creating a file named ``.env`` inside the project directory('Ecommerce-Analytics-Database') and writing inside it:
+```bash
+PG_PASSWORD="your_postgres_password"
+```
+If you choose this option, it is enough to do it once
+
+
+
+
+2.Now comes the create_db script, which is enough if you run it just once after downloading, no need to redo it in the future.
+
+We can run the create_db script(Again make sure you are in the 'Ecommerce-Analytics-Database') directory:
+
+Windows:
+```powershell
+py src/create_db.py   
+```
+
+Linux/MacOS:
+```bash
 python src/create_db.py
 ```
 
-OR creating a file named ``.env`` inside the project directory('Ecommerce-Analytics-Database') and writing inside it:
-```bash
-PG_PASSWORD="your_postgres_password"
-```
-And then just run the create_db.py:
-```bash
-py src/create_db.py
-```
 
-After that we run the insert commands.
-
-We have to do the same procedure, setting the environment variable so we can connect.
-
-### Windows PowerShell
+3.After that we run the insert commands.If you are going to modify the data, and wish to have it back you can always rerun the script.
+Windows:
 ```powershell
-$env:PG_PASSWORD="your_postgres_password"
-python src\data-generator.py
+py src/data_generator.py
 ```
 
-### Linux / macOS
+Linux/MacOS:
 ```bash
-export PG_PASSWORD="your_postgres_password"
-python src/data-generator.py
+python src/data_generator.py
 ```
 
-OR creating a file named ``.env`` inside the project directory('Ecommerce-Analytics-Database') and writing inside it:
-```bash
-PG_PASSWORD="your_postgres_password"
-```
-And then just run the data-generator.py:
-```bash
-py src/data-generator.py
-```
