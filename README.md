@@ -168,6 +168,7 @@ Windows:
 ```powershell
 py src/data_generator.py
 ```
+
 Linux/MacOS:
 ```bash
 python src/data_generator.py
