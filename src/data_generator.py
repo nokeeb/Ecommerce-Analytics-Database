@@ -43,10 +43,10 @@ def main():
     
     cur=conn.cursor()
     print('Starting CREATE and INSERT operations, this might take a couple of minutes..')
-    cur.execute("""DROP SCHEMA IF EXISTS schema CASCADE""")
-    cur.execute("""CREATE SCHEMA schema""")
-    cur.execute("""DROP TABLE IF EXISTS schema.customers CASCADE""")
-    cur.execute("""CREATE TABLE IF NOT EXISTS schema.customers
+    cur.execute("""DROP SCHEMA IF EXISTS ecommerce CASCADE""")
+    cur.execute("""CREATE SCHEMA ecommerce""")
+    cur.execute("""DROP TABLE IF EXISTS ecommerce.customers CASCADE""")
+    cur.execute("""CREATE TABLE IF NOT EXISTS ecommerce.customers
                 (
                 customer_id text  NOT NULL,
                 customer_name text  NOT NULL,
