@@ -68,7 +68,7 @@ LIMIT 10;
 
 Top 5 orders (id) by revenue
 ```sql
-SELECT o.order_id,SUM(oi.quantity*p.price::numeric) FROM ecommerce.orders AS o
+SELECT o.order_id,SUM(oi.quantity*p.price) FROM ecommerce.orders AS o
 JOIN ecommerce.order_items AS oi ON oi.order_id=o.order_id
 JOIN ecommerce.products AS p ON p.product_id=oi.product_id
 GROUP BY o.order_id
