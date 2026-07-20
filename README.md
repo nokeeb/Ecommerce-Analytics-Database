@@ -51,10 +51,10 @@ Top 10 customers (id,name) by consumption(total money spent)
 
 ```sql
 SELECT  c.customer_id AS ID ,c.customer_name AS Name ,SUM(p.price*oi.quantity) 
-FROM schema.customers AS c
-JOIN schema.orders AS o ON o.customer_id=c.customer_id
-JOIN schema.order_items AS oi ON oi.order_id=o.order_id
-JOIN schema.products AS p ON p.product_id=oi.product_id
+FROM ecommerce.customers AS c
+JOIN ecommerce.orders AS o ON o.customer_id=c.customer_id
+JOIN ecommerce.order_items AS oi ON oi.order_id=o.order_id
+JOIN ecommerce.products AS p ON p.product_id=oi.product_id
 GROUP BY c.customer_id,c.customer_name,o.order_id
 ORDER BY 3 DESC
 LIMIT 10;
@@ -68,9 +68,9 @@ LIMIT 10;
 
 Top 5 orders (id) by revenue
 ```sql
-SELECT o.order_id,SUM(oi.quantity*p.price::numeric) FROM schema.orders AS o
-JOIN schema.order_items AS oi ON oi.order_id=o.order_id
-JOIN schema.products AS p ON p.product_id=oi.product_id
+SELECT o.order_id,SUM(oi.quantity*p.price::numeric) FROM ecommerce.orders AS o
+JOIN ecommerce.order_items AS oi ON oi.order_id=o.order_id
+JOIN ecommerce.products AS p ON p.product_id=oi.product_id
 GROUP BY o.order_id
 ORDER BY 2 DESC
 LIMIT 5;
