@@ -14,7 +14,7 @@ def main():
 
     # Connecting to the database
     conn=psycopg2.connect(
-        dbname='Ecommerce Analytics',
+        dbname='ecommerce_analytics',
         user='postgres',
         password=db_password,
         host='localhost'
