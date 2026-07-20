@@ -3,6 +3,7 @@ import pandas as pd
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from psycopg2.extras import execute_values
 
 def main():
     BASE_DIR=Path(__file__).resolve().parent.parent
@@ -49,21 +50,16 @@ def main():
     cur.execute("""CREATE TABLE IF NOT EXISTS ecommerce.customers
                 (
                 customer_id text  NOT NULL,
-                customer_name text  NOT NULL,
                 city text  NOT NULL,
                 state text  NOT NULL,
+                customer_name text  NOT NULL,
+                
+                
                 CONSTRAINT customers_pkey PRIMARY KEY (customer_id)
                 )""")
-    for i in range(clean_customer_df.shape[0]):
-        cur.execute("""
-            INSERT INTO ecommerce.customers(customer_id, customer_name, city, state)
-            VALUES (%s, %s, %s, %s)
-        """, (
-            clean_customer_df['customer_id'].iloc[i],
-            clean_customer_df['customer_name'].iloc[i],
-            clean_customer_df['customer_city'].iloc[i],
-            clean_customer_df['customer_state'].iloc[i]
-        ))
+    customers=list(clean_customer_df[['customer_id','customer_city','customer_state','customer_name']].itertuples(index=False,name=None))
+    execute_values(cur,"""INSERT INTO ecommerce.customers(customer_id,city,state,customer_name) VALUES %s""",customers)
+
 
 
     cur.execute("""DROP TABLE IF EXISTS ecommerce.orders CASCADE""")
@@ -76,11 +72,8 @@ def main():
                 CONSTRAINT customer_id_FK FOREIGN KEY(customer_id) REFERENCES ecommerce.customers(customer_id)
                 
                 )""")
-    for i in range (clean_orders_df.shape[0]):
-        cur.execute("""INSERT INTO ecommerce.orders(order_id,customer_id,order_date) VALUES (%s,%s,%s)""",
-                    
-        (clean_orders_df['order_id'].iloc[i],clean_orders_df['customer_id'].iloc[i],clean_orders_df['order_date'].iloc[i])
-                    )
+    orders=list(clean_orders_df[['order_id','customer_id','order_date']].itertuples(index=False,name=None))
+    execute_values(cur,"""INSERT INTO ecommerce.orders(order_id,customer_id,order_date) VALUES %s""",orders)
         
     
     
@@ -91,17 +84,16 @@ def main():
                 product_id TEXT NOT NULL,
                 product_name TEXT NOT NULL,
                 category TEXT NOT NULL,
-                price MONEY NOT NULL,
+                price NUMERIC(10,2) NOT NULL,
                 CONSTRAINT product_id_PK PRIMARY KEY(product_id)
                 
                 
                 )""")
-    for i in range (clean_products_df.shape[0]):
-        product_price=int(clean_products_df['product_price'].iloc[i])
-        cur.execute("""INSERT INTO ecommerce.products(product_id,product_name,category,price) VALUES (%s,%s,%s,%s)"""
-                    ,(clean_products_df['product_id'].iloc[i],clean_products_df['product_name'].iloc[i],
-                    clean_products_df['product_category'].iloc[i],product_price)
-                    )
+    clean_products_df['product_price']=clean_products_df['product_price'].astype(float).round(2)
+    products=list(clean_products_df[['product_id','product_category','product_name','product_price']].itertuples(index=False,name=None))
+    execute_values(cur,"""INSERT INTO ecommerce.products(product_id,product_name,category,price) VALUES %s""",products)
+
+        
     cur.execute("""DROP TABLE IF EXISTS ecommerce.order_items CASCADE """)
     cur.execute("""CREATE TABLE IF NOT EXISTS ecommerce.order_items
                 (
@@ -113,11 +105,10 @@ def main():
                 CONSTRAINT order_id_FK FOREIGN KEY(order_id) REFERENCES ecommerce.orders(order_id),
                 CONSTRAINT product_id_FK FOREIGN KEY(product_id) REFERENCES ecommerce.products(product_id)
                 )""")
-    for i in range(order_items_df.shape[0]):
-        quantity=int(order_items_df['quantity'].iloc[i])
-        cur.execute("""INSERT INTO ecommerce.order_items(order_id,product_id,quantity) VALUES (%s,%s,%s)""",
-                    (order_items_df['order_id'].iloc[i],
-                    order_items_df['product_id'].iloc[i],quantity))
+    order_items_df['quantity']=order_items_df['quantity'].astype(int)
+    order_items=list(order_items_df[['order_id','product_id','quantity']].itertuples(index=False,name=None))
+    execute_values(cur,"""INSERT INTO ecommerce.order_items(order_id,product_id,quantity) VALUES %s""",order_items)
+
 
     conn.commit()
     print("Insert done! You can now proceed with database operations.")

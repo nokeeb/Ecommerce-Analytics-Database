@@ -7,7 +7,7 @@ JOIN ecommerce.products AS p ON p.product_id=oi.product_id
 WHERE o.order_id IS NOT NULL AND p.product_id IS NOT NULL
 
 --List of all customers and if they have orders, number of orders and total consumption
-SELECT c.customer_name,COUNT(o.order_id),SUM(oi.quantity*p.price::numeric) 
+SELECT c.customer_name,COUNT(o.order_id),SUM(oi.quantity*p.price) 
 FROM ecommerce.customers AS c
 LEFT JOIN ecommerce.orders AS o ON c.customer_id=o.customer_id
 JOIN ecommerce.order_items AS oi ON oi.order_id=o.order_id

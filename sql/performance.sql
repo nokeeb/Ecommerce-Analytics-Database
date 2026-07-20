@@ -24,7 +24,7 @@ JOIN ecommerce.order_items AS oi ON oi.order_id=o.order_id
 JOIN ecommerce.products AS p ON p.product_id=oi.product_id
 WHERE p.category LIKE 'climatizacao'
 
-DROP INDEX IF EXISTS ecommerce.product_category_idx
+DROP INDEX IF EXISTS ecommerce.product_category_idx;
 CREATE INDEX product_category_idx ON ecommerce.products(category)
 
 --after indexes

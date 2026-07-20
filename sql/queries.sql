@@ -23,7 +23,7 @@ ORDER BY 3 DESC;
 --Average order value
 
 SELECT ROUND(AVG(subq.sum),2) FROM(
-SELECT SUM(oi.quantity*p.price::numeric) AS sum FROM ecommerce.orders AS o
+SELECT SUM(oi.quantity*p.price) AS sum FROM ecommerce.orders AS o
 JOIN ecommerce.order_items AS oi ON oi.order_id=o.order_id
 JOIN ecommerce.products AS p ON p.product_id=oi.product_id
 GROUP BY o.order_id
@@ -45,7 +45,7 @@ ORDER BY month
 
 
 --Average consumption by customer
-SELECT c.customer_id,c.customer_name,ROUND(AVG(oi.quantity*price::numeric),2) FROM ecommerce.customers AS c
+SELECT c.customer_id,c.customer_name,ROUND(AVG(oi.quantity*price),2) FROM ecommerce.customers AS c
 JOIN ecommerce.orders AS o ON o.customer_id=c.customer_id
 JOIN ecommerce.order_items AS oi ON oi.order_id=o.order_id
 JOIN ecommerce.products AS p ON p.product_id=oi.product_id
@@ -53,7 +53,7 @@ GROUP BY c.customer_id
 
 
 --Average price by category
-SELECT p.category,ROUND(AVG(p.price::numeric),2)
+SELECT p.category,ROUND(AVG(p.price),2)
 FROM ecommerce.products AS p
 GROUP BY p.category
 ORDER BY 2 DESC
