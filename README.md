@@ -117,31 +117,40 @@ git clone https://github.com/nokeeb/Ecommerce-Analytics-Database/
 
 
 # How to run
-To run the insert commands, navigate into the project folder, and then write into a terminal of your choice:
-```bash
-cd src
-```
-Take a look at the Database Configuration section before proceeding with running the script to avoid errors
-
-Now once we are in the folder of the script itself,
-run:
-```bash
-python data-generator.py
-```
-If the command above does not work(Python doesnt get recognized), try:
-```bash
-py data-generator.py
-```
-
-Once you have a configured database and filled with data after running the scripts, you can play with the queries inside pgAdmin and do tons of other stuff
-
-## Database configuration
 
 This project does not store the PostgreSQL password in source code.
 
 Before running the Python scripts, set the `PG_PASSWORD` environment variable locally.
 
 Example:
+
+First we want to run the create_db.py script which is enough to run once (the first time)
+
+Make sure you are in the directory 'Ecommerce-Analytics-Database'
+### Windows PowerShell
+```powershell
+$env:PG_PASSWORD="your_postgres_password"
+py src/create_db.py
+```
+
+### Linux / macOS
+```bash
+export PG_PASSWORD="your_postgres_password"
+python src/create_db.py
+```
+
+OR creating a file named ``.env`` inside the project directory('Ecommerce-Analytics-Database') and writing inside it:
+```bash
+PG_PASSWORD="your_postgres_password"
+```
+And then just run the create_db.py:
+```bash
+py src/create_db.py
+```
+
+After that we run the insert commands.
+
+We have to do the same procedure, setting the environment variable so we can connect.
 
 ### Windows PowerShell
 ```powershell
@@ -155,7 +164,11 @@ export PG_PASSWORD="your_postgres_password"
 python src/data-generator.py
 ```
 
-OR creating a file named ``.env`` inside the project directory and writing inside it:
+OR creating a file named ``.env`` inside the project directory('Ecommerce-Analytics-Database') and writing inside it:
 ```bash
 PG_PASSWORD="your_postgres_password"
+```
+And then just run the data-generator.py:
+```bash
+py src/data-generator.py
 ```
