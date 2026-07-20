@@ -146,13 +146,13 @@ Example:
 ### Windows PowerShell
 ```powershell
 $env:PG_PASSWORD="your_postgres_password"
-python src\load_data.py
+python src\data-generator.py
 ```
 
 ### Linux / macOS
 ```bash
 export PG_PASSWORD="your_postgres_password"
-python src/load_data.py
+python src/data-generator.py
 ```
 
 OR creating a file named ``.env`` inside the project directory and writing inside it:
