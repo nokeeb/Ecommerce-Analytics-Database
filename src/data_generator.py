@@ -43,10 +43,10 @@ def main():
     
     cur=conn.cursor()
     print('Starting CREATE and INSERT operations, this might take a couple of minutes..')
-    cur.execute("""DROP SCHEMA IF EXISTS schema""")
-    cur.execute("""CREATE SCHEMA schema""")
-    cur.execute("""DROP TABLE IF EXISTS schema.customers CASCADE""")
-    cur.execute("""CREATE TABLE IF NOT EXISTS schema.customers
+    cur.execute("""DROP SCHEMA IF EXISTS ecommerce""")
+    cur.execute("""CREATE SCHEMA ecommerce""")
+    cur.execute("""DROP TABLE IF EXISTS ecommerce.customers CASCADE""")
+    cur.execute("""CREATE TABLE IF NOT EXISTS ecommerce.customers
                 (
                 customer_id text  NOT NULL,
                 customer_name text  NOT NULL,
@@ -56,7 +56,7 @@ def main():
                 )""")
     for i in range(clean_customer_df.shape[0]):
         cur.execute("""
-            INSERT INTO schema.customers(customer_id, customer_name, city, state)
+            INSERT INTO ecommerce.customers(customer_id, customer_name, city, state)
             VALUES (%s, %s, %s, %s)
         """, (
             clean_customer_df['customer_id'].iloc[i],
@@ -66,18 +66,18 @@ def main():
         ))
 
 
-    cur.execute("""DROP TABLE IF EXISTS schema.orders CASCADE""")
-    cur.execute("""CREATE TABLE IF NOT EXISTS schema.orders
+    cur.execute("""DROP TABLE IF EXISTS ecommerce.orders CASCADE""")
+    cur.execute("""CREATE TABLE IF NOT EXISTS ecommerce.orders
                 (
                 order_id TEXT NOT NULL,
                 customer_id TEXT NOT NULL,
                 order_date TIMESTAMP NOT NULL,
                 CONSTRAINT order_id_PK PRIMARY KEY(order_id),
-                CONSTRAINT customer_id_FK FOREIGN KEY(customer_id) REFERENCES schema.customers(customer_id)
+                CONSTRAINT customer_id_FK FOREIGN KEY(customer_id) REFERENCES ecommerce.customers(customer_id)
                 
                 )""")
     for i in range (clean_orders_df.shape[0]):
-        cur.execute("""INSERT INTO schema.orders(order_id,customer_id,order_date) VALUES (%s,%s,%s)""",
+        cur.execute("""INSERT INTO ecommerce.orders(order_id,customer_id,order_date) VALUES (%s,%s,%s)""",
                     
         (clean_orders_df['order_id'].iloc[i],clean_orders_df['customer_id'].iloc[i],clean_orders_df['order_date'].iloc[i])
                     )
@@ -85,8 +85,8 @@ def main():
     
     
 
-    cur.execute("""DROP TABLE IF EXISTS schema.products CASCADE""")
-    cur.execute("""CREATE TABLE IF NOT EXISTS schema.products
+    cur.execute("""DROP TABLE IF EXISTS ecommerce.products CASCADE""")
+    cur.execute("""CREATE TABLE IF NOT EXISTS ecommerce.products
                 (
                 product_id TEXT NOT NULL,
                 product_name TEXT NOT NULL,
@@ -98,24 +98,24 @@ def main():
                 )""")
     for i in range (clean_products_df.shape[0]):
         product_price=int(clean_products_df['product_price'].iloc[i])
-        cur.execute("""INSERT INTO schema.products(product_id,product_name,category,price) VALUES (%s,%s,%s,%s)"""
+        cur.execute("""INSERT INTO ecommerce.products(product_id,product_name,category,price) VALUES (%s,%s,%s,%s)"""
                     ,(clean_products_df['product_id'].iloc[i],clean_products_df['product_name'].iloc[i],
                     clean_products_df['product_category'].iloc[i],product_price)
                     )
-    cur.execute("""DROP TABLE IF EXISTS schema.order_items CASCADE """)
-    cur.execute("""CREATE TABLE IF NOT EXISTS schema.order_items
+    cur.execute("""DROP TABLE IF EXISTS ecommerce.order_items CASCADE """)
+    cur.execute("""CREATE TABLE IF NOT EXISTS ecommerce.order_items
                 (
                 order_item_id INT NOT NULL GENERATED ALWAYS AS IDENTITY,
                 order_id TEXT NOT NULL,
                 product_id TEXT NOT NULL,
                 quantity INT NOT NULL,
                 CONSTRAINT order_item_id_PK PRIMARY KEY(order_item_id),
-                CONSTRAINT order_id_FK FOREIGN KEY(order_id) REFERENCES schema.orders(order_id),
-                CONSTRAINT product_id_FK FOREIGN KEY(product_id) REFERENCES schema.products(product_id)
+                CONSTRAINT order_id_FK FOREIGN KEY(order_id) REFERENCES ecommerce.orders(order_id),
+                CONSTRAINT product_id_FK FOREIGN KEY(product_id) REFERENCES ecommerce.products(product_id)
                 )""")
     for i in range(order_items_df.shape[0]):
         quantity=int(order_items_df['quantity'].iloc[i])
-        cur.execute("""INSERT INTO schema.order_items(order_id,product_id,quantity) VALUES (%s,%s,%s)""",
+        cur.execute("""INSERT INTO ecommerce.order_items(order_id,product_id,quantity) VALUES (%s,%s,%s)""",
                     (order_items_df['order_id'].iloc[i],
                     order_items_df['product_id'].iloc[i],quantity))
 
