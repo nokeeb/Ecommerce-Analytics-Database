@@ -25,7 +25,7 @@ OR o.order_date IS NULL;
 --duplicate check
 
 SELECT COUNT(c.customer_id),c.customer_id FROM ecommerce.customers AS c
-GROUP BY c.customer_id;
+GROUP BY c.customer_id
 HAVING COUNT(c.customer_id)>1;
 
 SELECT COUNT(oi.order_item_id),oi.order_item_id FROM ecommerce.order_items AS oi

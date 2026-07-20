@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS ecommerce.products
                 product_id TEXT NOT NULL,
                 product_name TEXT NOT NULL,
                 category TEXT NOT NULL,
-                price MONEY NOT NULL,
+                price NUMERIC(10,2) NOT NULL,
                 CONSTRAINT product_id_PK PRIMARY KEY(product_id)
                 
                 
